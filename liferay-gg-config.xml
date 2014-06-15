@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Basic configuration for atomic cache. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+
+<bean id="atomic-cache" class="org.gridgain.grid.cache.GridCacheConfiguration" abstract="true">
+    <property name="cacheMode" value="PARTITIONED"/>
+    <property name="atomicityMode" value="ATOMIC"/>
+    <property name="writeSynchronizationMode" value="FULL_SYNC"/>
+</bean>
+ 
+<!-- Basic configuration for transactional cache. -->
+<bean id="transactional-cache" class="org.gridgain.grid.cache.GridCacheConfiguration" abstract="true">
+    <property name="cacheMode" value="PARTITIONED"/>
+    <property name="atomicityMode" value="TRANSACTIONAL"/>
+    <property name="writeSynchronizationMode" value="FULL_SYNC"/>
+</bean>
+ 
+		<bean id="grid.cfg" class="org.gridgain.grid.GridConfiguration">
+		<!-- 
+			Specify the name of the caching grid (should correspond to the 
+			one in Hibernate configuration).
+		-->
+		<property name="gridName" value="hibernate-grid"/>
+		<!-- 
+			Specify cache configuration for each L2 cache region (which corresponds 
+			to a full class name or a full association name).
+		-->
+		<property name="cacheConfiguration">
+		<list>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.counter.model.Counter" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Account" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Address" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.BackgroundTask" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.BrowserTracker" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.ClassName" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.ClusterGroup" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.CMISRepository" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Company" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Contact" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Country" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.EmailAddress" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.ExportImportConfiguration" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Group" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Image" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Layout" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.LayoutBranch" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.LayoutFriendlyURL" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.LayoutPrototype" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.LayoutRevision" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.LayoutSet" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.LayoutSetBranch" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.LayoutSetPrototype" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.LayoutTemplate" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.ListType" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Lock" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.MembershipRequest" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Organization" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.OrgGroupRole" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.OrgLabor" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.PasswordPolicy" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.PasswordPolicyRel" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.PasswordTracker" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Permission" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Phone" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.PluginSetting" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Portal" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.PortalPreferences" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Portlet" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.PortletItem" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.PortletPreferences" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Quartz" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Region" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Release" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Repository" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.RepositoryEntry" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Resource" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.ResourceAction" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.ResourceBlock" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.ResourceBlockPermission" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.ResourcePermission" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.ResourceTypePermission" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Role" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.ServiceComponent" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Shard" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Staging" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Subscription" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.SystemEvent" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Team" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Theme" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Ticket" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.User" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.UserGroup" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.UserGroupGroupRole" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.UserGroupRole" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.UserIdMapper" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.UserNotificationDelivery" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.UserNotificationEvent" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.UserTracker" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.UserTrackerPath" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.VirtualHost" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.WebDAVProps" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Website" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.WorkflowDefinitionLink" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.WorkflowInstanceLink" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.announcements.model.AnnouncementsDelivery" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.announcements.model.AnnouncementsEntry" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.announcements.model.AnnouncementsFlag" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.asset.model.AssetCategory" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.asset.model.AssetCategoryProperty" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.asset.model.AssetEntry" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.asset.model.AssetLink" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.asset.model.AssetTag" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.asset.model.AssetTagProperty" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.asset.model.AssetTagPropertyKey" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.asset.model.AssetTagStats" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.asset.model.AssetVocabulary" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.blogs.model.BlogsEntry" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.blogs.model.BlogsStatsUser" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.bookmarks.model.BookmarksEntry" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.bookmarks.model.BookmarksFolder" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.calendar.model.CalEvent" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.documentlibrary.model.DLApp" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.documentlibrary.model.DLAppHelper" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.documentlibrary.model.DLContent" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.documentlibrary.model.DLFileEntry" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.documentlibrary.model.DLFileEntryMetadata" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.documentlibrary.model.DLFileEntryType" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.documentlibrary.model.DLFileRank" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.documentlibrary.model.DLFileShortcut" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.documentlibrary.model.DLFileVersion" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.documentlibrary.model.DLFolder" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.documentlibrary.model.DLSyncEvent" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.dynamicdatalists.model.DDLRecord" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.dynamicdatalists.model.DDLRecordSet" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.dynamicdatalists.model.DDLRecordVersion" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.dynamicdatamapping.model.DDMContent" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.dynamicdatamapping.model.DDMStorageLink" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.dynamicdatamapping.model.DDMStructure" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.dynamicdatamapping.model.DDMStructureLink" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.dynamicdatamapping.model.DDMTemplate" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.expando.model.ExpandoColumn" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.expando.model.ExpandoRow" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.expando.model.ExpandoTable" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.expando.model.ExpandoValue" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.flags.model.FlagsEntry" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.journal.model.JournalArticle" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.journal.model.JournalArticleImage" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.journal.model.JournalArticleResource" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.journal.model.JournalContentSearch" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.journal.model.JournalFeed" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.journal.model.JournalFolder" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.journal.model.JournalStructure" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.journal.model.JournalTemplate" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.messageboards.model.MBBan" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.messageboards.model.MBCategory" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.messageboards.model.MBDiscussion" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.messageboards.model.MBMailingList" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.messageboards.model.MBMessage" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.messageboards.model.MBStatsUser" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.messageboards.model.MBThread" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.messageboards.model.MBThreadFlag" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.mobiledevicerules.model.MDRAction" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.mobiledevicerules.model.MDRRule" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.mobiledevicerules.model.MDRRuleGroup" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.mobiledevicerules.model.MDRRuleGroupInstance" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.polls.model.PollsChoice" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.polls.model.PollsQuestion" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.polls.model.PollsVote" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.ratings.model.RatingsEntry" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.ratings.model.RatingsStats" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.shopping.model.ShoppingCart" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.shopping.model.ShoppingCategory" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.shopping.model.ShoppingCoupon" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.shopping.model.ShoppingItem" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.shopping.model.ShoppingItemField" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.shopping.model.ShoppingItemPrice" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.shopping.model.ShoppingOrder" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.shopping.model.ShoppingOrderItem" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.social.model.SocialActivity" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.social.model.SocialActivityAchievement" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.social.model.SocialActivityCounter" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.social.model.SocialActivityInterpreter" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.social.model.SocialActivityLimit" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.social.model.SocialActivitySet" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.social.model.SocialActivitySetting" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.social.model.SocialRelation" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.social.model.SocialRequest" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.social.model.SocialRequestInterpreter" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.softwarecatalog.model.SCFrameworkVersion" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.softwarecatalog.model.SCLicense" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.softwarecatalog.model.SCProductEntry" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.softwarecatalog.model.SCProductScreenshot" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.softwarecatalog.model.SCProductVersion" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.trash.model.TrashEntry" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.trash.model.TrashVersion" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.wiki.model.WikiNode" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.wiki.model.WikiPage" /></bean>
+				<bean parent="transactional-cache"><property name="name" value="com.liferay.portlet.wiki.model.WikiPageResource" /></bean>
+		</list>
+		</property>	
+		</bean>
+
+</beans>

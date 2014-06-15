@@ -1,0 +1,179 @@
+	<?xml version='1.0' encoding='utf-8'?>
+	<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+	<hibernate-configuration>
+	<session-factory>
+	        <!-- Enable L2 cache. -->
+        <property name="cache.use_second_level_cache">true</property>
+        
+        <!-- Generate L2 cache statistics. -->
+        <property name="generate_statistics">true</property>
+        
+        <!-- Specify GridGain as L2 cache provider. -->
+        <property name="cache.region.factory_cache-class">org.gridgain.grid.cache.hibernate.GridHibernateRegionFactory</property>
+        
+        <!-- Specify the name of the grid, that will be used for second level caching. -->
+        <property name="org.gridgain.hibernate.grid_name">hibernate-grid</property>
+        
+        <!-- Set default L2 cache access type. -->
+        <property name="org.gridgain.hibernate.default_access_type">READ_ONLY</property>
+        
+        <!-- Specify the entity cache-classes for mapping. -->
+        
+		<cache-class name="com.liferay.counter.model.impl.CounterImpl" usage="read-only"/>
+		<cache-class name="com.liferay.portal.model.impl.AccountImpl" usage="read-only"/>
+		<cache-class name="com.liferay.portal.model.impl.AddressImpl" usage="read-only"/>
+		<cache-class name="com.liferay.portal.model.impl.BackgroundTaskImpl" usage="read-only"/>
+		<cache-class name="com.liferay.portal.model.impl.BrowserTrackerImpl" usage="read-only"/>
+		<cache-class name="com.liferay.portal.model.impl.cache-classNameImpl" usage="read-only"/>
+		<cache-class name="com.liferay.portal.model.impl.ClusterGroupImpl" usage="read-only">
+		<cache-class name="com.liferay.portal.model.impl.CompanyImpl" usage="read-only">
+		<cache-class name="com.liferay.portal.model.impl.ContactImpl" usage="read-only">
+		<cache-class name="com.liferay.portal.model.impl.CountryImpl" usage="read-only">
+		<cache-class name="com.liferay.portal.model.impl.EmailAddressImpl" usage="read-only">
+		<cache-class name="com.liferay.portal.model.impl.ExportImportConfigurationImpl" usage="read-only">
+	<cache-class name="com.liferay.portal.model.impl.GroupImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.ImageImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.LayoutImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.LayoutBranchImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.LayoutFriendlyURLImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.LayoutPrototypeImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.LayoutRevisionImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.LayoutSetImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.LayoutSetBranchImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.LayoutSetPrototypeImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.ListTypeImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.LockImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.MembershipRequestImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.OrganizationImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.OrgGroupRoleImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.OrgLaborImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.PasswordPolicyImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.PasswordPolicyRelImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.PasswordTrackerImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.PhoneImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.PluginSettingImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.PortalPreferencesImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.PortletImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.PortletItemImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.PortletPreferencesImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.RegionImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.ReleaseImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.RepositoryImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.RepositoryEntryImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.ResourceActionImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.ResourceBlockImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.ResourceBlockPermissionImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.ResourcePermissionImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.ResourceTypePermissionImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.RoleImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.ServiceComponentImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.ShardImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.SubscriptionImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.SystemEventImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.TeamImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.TicketImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.UserImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.UserGroupImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.UserGroupGroupRoleImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.UserGroupRoleImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.UserIdMapperImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.UserNotificationDeliveryImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.UserNotificationEventImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.UserTrackerImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.UserTrackerPathImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.VirtualHostImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.WebDAVPropsImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.WebsiteImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.WorkflowDefinitionLinkImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portal.model.impl.WorkflowInstanceLinkImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.announcements.model.impl.AnnouncementsDeliveryImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.announcements.model.impl.AnnouncementsEntryImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.announcements.model.impl.AnnouncementsFlagImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.asset.model.impl.AssetCategoryImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.asset.model.impl.AssetCategoryPropertyImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.asset.model.impl.AssetEntryImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.asset.model.impl.AssetLinkImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.asset.model.impl.AssetTagImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.asset.model.impl.AssetTagPropertyImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.asset.model.impl.AssetTagStatsImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.asset.model.impl.AssetVocabularyImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.blogs.model.impl.BlogsEntryImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.blogs.model.impl.BlogsStatsUserImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.bookmarks.model.impl.BookmarksEntryImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.bookmarks.model.impl.BookmarksFolderImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.calendar.model.impl.CalEventImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.documentlibrary.model.impl.DLContentImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.documentlibrary.model.impl.DLFileEntryImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.documentlibrary.model.impl.DLFileEntryMetadataImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.documentlibrary.model.impl.DLFileEntryTypeImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.documentlibrary.model.impl.DLFileRankImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.documentlibrary.model.impl.DLFileShortcutImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.documentlibrary.model.impl.DLFileVersionImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.documentlibrary.model.impl.DLFolderImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.documentlibrary.model.impl.DLSyncEventImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.dynamicdatalists.model.impl.DDLRecordImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.dynamicdatalists.model.impl.DDLRecordSetImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.dynamicdatalists.model.impl.DDLRecordVersionImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.dynamicdatamapping.model.impl.DDMContentImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.dynamicdatamapping.model.impl.DDMStorageLinkImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.dynamicdatamapping.model.impl.DDMStructureImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.dynamicdatamapping.model.impl.DDMStructureLinkImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.dynamicdatamapping.model.impl.DDMTemplateImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.expando.model.impl.ExpandoColumnImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.expando.model.impl.ExpandoRowImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.expando.model.impl.ExpandoTableImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.expando.model.impl.ExpandoValueImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.journal.model.impl.JournalArticleImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.journal.model.impl.JournalArticleImageImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.journal.model.impl.JournalArticleResourceImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.journal.model.impl.JournalContentSearchImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.journal.model.impl.JournalFeedImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.journal.model.impl.JournalFolderImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.messageboards.model.impl.MBBanImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.messageboards.model.impl.MBCategoryImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.messageboards.model.impl.MBDiscussionImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.messageboards.model.impl.MBMailingListImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.messageboards.model.impl.MBMessageImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.messageboards.model.impl.MBStatsUserImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.messageboards.model.impl.MBThreadImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.messageboards.model.impl.MBThreadFlagImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.mobiledevicerules.model.impl.MDRActionImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.mobiledevicerules.model.impl.MDRRuleImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.mobiledevicerules.model.impl.MDRRuleGroupImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.mobiledevicerules.model.impl.MDRRuleGroupInstanceImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.polls.model.impl.PollsChoiceImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.polls.model.impl.PollsQuestionImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.polls.model.impl.PollsVoteImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.ratings.model.impl.RatingsEntryImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.ratings.model.impl.RatingsStatsImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.shopping.model.impl.ShoppingCartImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.shopping.model.impl.ShoppingCategoryImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.shopping.model.impl.ShoppingCouponImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.shopping.model.impl.ShoppingItemImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.shopping.model.impl.ShoppingItemFieldImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.shopping.model.impl.ShoppingItemPriceImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.shopping.model.impl.ShoppingOrderImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.shopping.model.impl.ShoppingOrderItemImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.social.model.impl.SocialActivityImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.social.model.impl.SocialActivityAchievementImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.social.model.impl.SocialActivityCounterImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.social.model.impl.SocialActivityLimitImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.social.model.impl.SocialActivitySetImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.social.model.impl.SocialActivitySettingImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.social.model.impl.SocialRelationImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.social.model.impl.SocialRequestImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.softwarecatalog.model.impl.SCFrameworkVersionImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.softwarecatalog.model.impl.SCLicenseImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.softwarecatalog.model.impl.SCProductEntryImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.softwarecatalog.model.impl.SCProductScreenshotImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.softwarecatalog.model.impl.SCProductVersionImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.trash.model.impl.TrashEntryImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.trash.model.impl.TrashVersionImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.wiki.model.impl.WikiNodeImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.wiki.model.impl.WikiPageImpl" usage="read-only"/>
+	<cache-class name="com.liferay.portlet.wiki.model.impl.WikiPageResourceImpl" usage="read-only"/>
+	</session-factory>	
+</hibernate-configuration>
