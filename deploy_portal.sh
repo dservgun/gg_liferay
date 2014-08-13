@@ -13,8 +13,8 @@ DEST_LIFERAY_META_LOC=../liferay-portal/bin/META-INF
 GG_CACHE_DEST_CONFIG_DIR=${TOMCAT_WEBAPPS}/META-INF
 GG_CACHE_SRC_CONFIG_FILE=liferay-gg-config.xml
 GG_CACHE_DEST_CONFIG_FILE=gg-config.xml
-GG_SRC_DIR=/Users/dinkarganti/gridgain-platform-os-6.0.3-nix
-GG_COMPILE_DEST=/Users/dinkarganti/liferay-portal/lib/development
+GG_SRC_DIR=${HOME}/gridgain-platform-os-6.0.3-nix
+GG_COMPILE_DEST=${HOME}/liferay-portal/lib/development
 GG_JAR=gridgain-platform-6.0.3.jar
 
 COPY="cp -p"
