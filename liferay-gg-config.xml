@@ -13,6 +13,8 @@
     <property name="cacheMode" value="PARTITIONED"/>
     <property name="atomicityMode" value="ATOMIC"/>
     <property name="writeSynchronizationMode" value="FULL_SYNC"/>
+    <!-- Enable OffHeap and use max size of 10 Gigabytes. -->
+    <property name="offHeapMaxMemory" value="#{1024L * 1024L * 1024L * 4}"/>     
 </bean>
  
 <!-- Basic configuration for transactional cache. -->
@@ -47,8 +49,8 @@
 				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Country" /></bean>
 				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.EmailAddress" /></bean>
 				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.ExportImportConfiguration" /></bean>
-				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Group" /></bean>
-				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Image" /></bean>
+<!-- 				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Group" /></bean>
+ -->				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Image" /></bean>
 				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.Layout" /></bean>
 				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.LayoutBranch" /></bean>
 				<bean parent="transactional-cache"><property name="name" value="com.liferay.portal.model.LayoutFriendlyURL" /></bean>
