@@ -15,9 +15,9 @@ DEST_LIFERAY_META_LOC=${SRC_LIFERAY}/bin/META-INF
 GG_CACHE_DEST_CONFIG_DIR=${TOMCAT_WEBAPPS}/META-INF
 GG_CACHE_SRC_CONFIG_FILE=liferay-gg-config.xml
 GG_CACHE_DEST_CONFIG_FILE=gg-config.xml
-GG_SRC_DIR=${HOME}/gridgain-datagrid-os-6.2.0-rc5-nix
+GG_SRC_DIR=${HOME}/gridgain-fabric-os-6.5.0
 GG_COMPILE_DEST=${HOME}/liferay-portal/lib/development
-GG_JAR=gridgain-6.2.0-rc5.jar
+GG_JAR=gridgain-core-6.5.0.jar
 
 COPY="cp -p"
 

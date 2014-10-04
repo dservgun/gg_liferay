@@ -9,19 +9,30 @@
        http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 
 
-<bean id="atomic-cache" class="org.gridgain.grid.cache.GridCacheConfiguration" abstract="true">
-    <property name="cacheMode" value="PARTITIONED"/>
-    <property name="atomicityMode" value="ATOMIC"/>
-    <property name="writeSynchronizationMode" value="FULL_SYNC"/>
-    <!-- Enable OffHeap and use max size of 10 Gigabytes. -->
-    <property name="offHeapMaxMemory" value="#{1024L * 1024L * 1024L * 4}"/>     
-</bean>
  
 <!-- Basic configuration for transactional cache. -->
 <bean id="transactional-cache" class="org.gridgain.grid.cache.GridCacheConfiguration" abstract="true">
     <property name="cacheMode" value="PARTITIONED"/>
     <property name="atomicityMode" value="TRANSACTIONAL"/>
     <property name="writeSynchronizationMode" value="FULL_SYNC"/>
+    <!-- Enable swap -->
+    <property name="swapEnabled" value="true"/>
+    <!-- Always store cache entries in off-heap memory. -->
+    <property name="memoryMode" value="OFFHEAP_TIERED"/>
+    <!-- Enable OffHeap and use max size 1 Gigabytes. -->
+    <property name="offHeapMaxMemory" value="#{1 * 1024L * 1024L * 1024L}"/>
+ 
+    <property name="evictionPolicy">
+        <!-- FIFO eviction policy. -->
+        <bean class="org.gridgain.grid.cache.eviction.lru.GridCacheLruEvictionPolicy">
+            <!--
+               Maximum number of cache entries this policy allows.
+               If the number of entries in cache exceeds this quantity,
+               the entries get evicted by FIFO algorithm.
+            -->
+            <property name="maxSize" value="100000"/>
+        </bean>
+    </property>
 </bean>
  
 		<bean id="grid.cfg" class="org.gridgain.grid.GridConfiguration">
