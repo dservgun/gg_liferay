@@ -21,11 +21,17 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
  * Portlet implementation class GridgainCache
  */
 public class GridgainCache extends GenericPortlet {
-	
-	private static void startCache(){
+	private boolean cacheStarted = false;
+	private void startCache(){
 		try {
 			_log.info("Initializing cache");
-			GridGain.start("/home/emperor/gg_liferay/liferay-gg-config.xml");
+            if(!cacheStarted){ 
+                GridGain.start("/home/emperor/gg_liferay/liferay-gg-config.xml");
+                cacheStarted = true;
+            }else {
+                _log.warn("Cache already started. Not starting again");
+            }
+            
 			_log.info("Cache initialized");
 		}catch(Exception e){
 			_log.error("ERROR", e);
