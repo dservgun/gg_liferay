@@ -11,37 +11,25 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import javax.portlet.ResourceRequest;
 import javax.portlet.ResourceResponse;
-
-import org.gridgain.grid.GridGain;
+import org.springframework.stereotype.Component;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-
+import org.gridgain.grid.GridGain;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.springframework.beans.factory.annotation.Autowired;
 /**
  * Portlet implementation class GridgainCache
  */
+
 public class GridgainCache extends GenericPortlet {
-	private boolean cacheStarted = false;
-	private void startCache(){
-		try {
-			_log.info("Initializing cache");
-            if(!cacheStarted){ 
-                GridGain.start("/home/emperor/gg_liferay/liferay-gg-config.xml");
-                cacheStarted = true;
-            }else {
-                _log.warn("Cache already started. Not starting again");
-            }
-            
-			_log.info("Cache initialized");
-		}catch(Exception e){
-			_log.error("ERROR", e);
-			throw new RuntimeException(e); 
-		}
-	}
+    private static AtomicBoolean cacheStarted = new AtomicBoolean();
+    @Autowired
+    private GridgainCacheService gridgainCacheService;
+    
     public void init() {
         viewTemplate = getInitParameter("view-jsp");
         _log.info("Initializing portlet");
-        startCache();
         _log.info("Portlet initialized");
     }
 

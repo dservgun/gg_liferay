@@ -12,7 +12,6 @@
  
 <!-- Basic configuration for transactional cache. -->
 <bean id="transactional-cache" class="org.gridgain.grid.cache.GridCacheConfiguration" abstract="true">
-
     <property name="cacheMode" value="PARTITIONED"/>
     <property name="atomicityMode" value="TRANSACTIONAL"/>
     <property name="writeSynchronizationMode" value="FULL_SYNC"/>

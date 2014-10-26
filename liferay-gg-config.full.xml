@@ -33,6 +33,7 @@
             <property name="maxSize" value="100000"/>
         </bean>
     </property>
+
 </bean>
  
 		<bean id="grid.cfg" class="org.gridgain.grid.GridConfiguration">
