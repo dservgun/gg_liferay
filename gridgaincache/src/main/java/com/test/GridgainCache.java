@@ -30,7 +30,24 @@ public class GridgainCache extends GenericPortlet {
     public void init() {
         viewTemplate = getInitParameter("view-jsp");
         _log.info("Initializing portlet");
+        startCache();
         _log.info("Portlet initialized");
+    }
+
+    public void startCache(){
+        try {
+            _log.info("Initializing cache");
+            if(!cacheStarted.get()){ 
+                GridGain.start("/home/emperor/gg_liferay/liferay-gg-config.xml");
+                cacheStarted.set(true);
+            }else {
+                _log.warn("Cache already started. Not starting again");
+            }            
+            _log.info("Cache initialized");
+        }catch(Exception e){
+            _log.error("ERROR", e);
+            throw new RuntimeException(e); 
+        }
     }
 
     public void processAction(
